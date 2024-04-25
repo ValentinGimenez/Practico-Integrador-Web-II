@@ -50,15 +50,15 @@ app.post("/traducir", async (req, res) => {
 app.post('/compras', async (req, res) => {
   try {
     const nuevacompra = req.body;
-    let compras = [];
+    let compra = [];
     try {
       const comprasanteriores = await fs.readFile('compras.json', 'utf8');
-      compras = JSON.parse(comprasanteriores);
+      compra = JSON.parse(comprasanteriores);
     } catch (error) {
       console.error('Error al leer el archivo "compras.json":', error);
     }
-    compras.push(nuevacompra);
-    await fs.writeFile('compras.json', JSON.stringify(compras, null, 2));
+    compra.push(nuevacompra);
+    await fs.writeFile('compras.json', JSON.stringify(compra, null, 2));
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: error.message });
