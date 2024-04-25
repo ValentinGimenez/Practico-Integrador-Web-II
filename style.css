@@ -419,6 +419,7 @@ nav ul li a.activo {
   text-align: center;
   margin-bottom: 8px;
   margin-left: 200px;
+  font-size: 17px;
 }
 .carrito-vaciar:hover {
   filter: brightness(1.75);
@@ -426,6 +427,7 @@ nav ul li a.activo {
 .comprar {
   background: #2da85d;
   color: #fff;
+  font-size: 20px;
 }
 .comprar:hover {
   background: #4ab474;
