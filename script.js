@@ -302,10 +302,9 @@ let cart = [];
         if (!response.ok) {
             throw new Error(`Error al procesar la compra: ${response.status}`);
         }
-    })
+      })
     .catch(error => {
         console.error('Error:', error);
     });
     vaciarcarrito();
-    alert("¡Gracias por tu compra!");
 }
