@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const translate = require("node-google-translate-skidz");
+const path = require('path');
 const fs = require("fs").promises;
 const app = express();
 const port = 3000;
@@ -21,7 +22,7 @@ app.get("/productos", async (req, res) => {
 });
 app.get("/ofertas", async (req, res) => {
   try {
-    const response = await fs.readFile("ofertas.json");
+    const response = await fs.readFile(path.join(__dirname, 'ofertas.json'));
     const ofertas = JSON.parse(response);
     res.json(ofertas);
   } catch (error) {
@@ -52,13 +53,13 @@ app.post('/compras', async (req, res) => {
     const nuevacompra = req.body;
     let compra = [];
     try {
-      const comprasanteriores = await fs.readFile('compras.json', 'utf8');
+      const comprasanteriores = await fs.readFile(path.join(__dirname, 'compras.json'), 'utf8');
       compra = JSON.parse(comprasanteriores);
     } catch (error) {
       console.error('Error al leer el archivo "compras.json":', error);
     }
     compra.push(nuevacompra);
-    await fs.writeFile('compras.json', JSON.stringify(compra, null, 2));
+    await fs.writeFile(path.join(__dirname, 'compras.json'), JSON.stringify(compra, null, 2));
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: error.message });
