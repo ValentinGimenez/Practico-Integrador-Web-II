@@ -308,6 +308,6 @@ let cart = [];
     .catch(error => {
         console.error('Error:', error);
     });
-    alert('Gracias por tu compra!');
     vaciarcarrito();
+    alert('Gracias por tu compra!');
 }
